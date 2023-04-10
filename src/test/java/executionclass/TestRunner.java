@@ -10,8 +10,7 @@ import org.junit.runner.RunWith;
 
         glue = "",
 
-        tags = "@testLoan",
-//        tags = "@test1",
+        tags = "@testL",
 
         plugin = {
         "pretty",

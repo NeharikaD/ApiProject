@@ -3,13 +3,16 @@ package stepdeffinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.utilities.CommonClass;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LoanInSiteSteps {
 
-    @Given("User sets base URL for LoanInSite API request")
+    @Given("User sets base URL for LoanInSight API request")
     public static void userSetsBaseURLForLoanInSiteAPIRequest() {
         CommonClass.setURL();
 
@@ -21,13 +24,13 @@ public class LoanInSiteSteps {
 
     }
 
-    @Given("user enters the key-value pairs for username {string} & password {string} in the selected option {string}")
+    @Given("User enters the key-value pairs for username {string} & password {string} in the selected option {string}")
     public void userEntersTheKeyValuePairsForUsernamePasswordInTheSelectedOption(String usernameValue, String passwordValue, String option) {
         CommonClass.setFormParameters(usernameValue, passwordValue, option);
 
     }
 
-    @And("user executes the post request")
+    @And("User executes the post request")
     public void userExecutesThePostRequest() {
         String endPoint = CommonClass.property.getProperty("loginEndPoint").toString();
         CommonClass.setPostRequest(endPoint);
@@ -40,11 +43,7 @@ public class LoanInSiteSteps {
 
     }
 
-    @Given("user enters the key-value pairs for username as invalid username {string} & valid password {string} in the selected option {string}")
-    public void userEntersTheKeyValuePairsForUsernameAsInvalidUsernameValidPasswordInTheSelectedOption(String usernameValue, String passwordValue, String option) {
-        CommonClass.setFormParameters(usernameValue, passwordValue, option);
 
-    }
 
     @Given("Enter the query parameters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} as key-value pairs in Params")
     public void enterTheQueryParametersAsKeyValuePairsInParams(String airVal, String lender, String loanAmt, String state, String numOfYears, String locationPreference, String webServicePreference, String riskTolerancePreference, String timeHorizonPreference, String userPreference, String password, String reminderfreq, String plan, String email) {
@@ -58,6 +57,58 @@ public class LoanInSiteSteps {
         CommonClass.setGetRequest(endPoint);
 
     }
+
+
+    @Given("Keep the query parameters as key-value pairs in Params blank")
+    public void keepTheQueryParametersAsKeyValuePairsInParamsBlank() {
+        CommonClass.setParams("","");
+
+    }
+
+    @Given("Enter the query parameters password, email, confirmPassword as key-value pairs in Params")
+    public void enterTheQueryParametersPasswordEmailConfirmPasswordAsKeyValuePairsInParams() {
+        CommonClass.setEmailPassword();
+
+    }
+
+
+    @Given("Enter the query parameters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} as key-value pairs in Params")
+    public void enterTheQueryParametersAsKeyValuePairsInParams(String airVal, String lender, String loanAmt, String state, String numOfYears, String locationPreference, String webServicePreference, String riskTolerancePreference, String timeHorizonPreference, String userPreference, String reminderfreq, String plan, String email) {
+        CommonClass.getRequest = CommonClass.request
+                .queryParam("airVal",airVal)
+                .queryParam("lender",lender)
+                .queryParam("loanAmt",loanAmt)
+                .queryParam("state",state)
+                .queryParam("numOfYears",numOfYears)
+                .queryParam("locationPreference",locationPreference)
+                .queryParam("webServicePreference",webServicePreference)
+                .queryParam("riskTolerancePreference",riskTolerancePreference)
+                .queryParam("timeHorizonPreference",timeHorizonPreference)
+                .queryParam("userPreference",userPreference)
+                .queryParam("reminderfreq",reminderfreq)
+                .queryParam("plan",plan)
+                .queryParam("email",email);
+    }
+
+    @Given("Enter the query parameters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} key-value pairs in Params")
+    public void enterTheQueryParametersKeyValuePairsInParams(String airVal, String lender, String loanAmt, String state, String numOfYears, String locationPreference, String webServicePreference, String riskTolerancePreference, String timeHorizonPreference, String userPreference, String password, String reminderfreq, String plan) {
+        CommonClass.getRequest = CommonClass.request
+                .queryParam("airVal",airVal)
+                .queryParam("lender",lender)
+                .queryParam("loanAmt",loanAmt)
+                .queryParam("state",state)
+                .queryParam("numOfYears",numOfYears)
+                .queryParam("locationPreference",locationPreference)
+                .queryParam("webServicePreference",webServicePreference)
+                .queryParam("riskTolerancePreference",riskTolerancePreference)
+                .queryParam("timeHorizonPreference",timeHorizonPreference)
+                .queryParam("userPreference",userPreference)
+                .queryParam("password",password)
+                .queryParam("reminderfreq",reminderfreq)
+                .queryParam("plan",plan)
+                .queryParam("confirmPassword",password);
+    }
+
 
 
 }

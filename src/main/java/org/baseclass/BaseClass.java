@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
 
-//    public static WebDriver driver;
-//
+    public static WebDriver driver;
+
 //    public static void commonMethod() throws InterruptedException {
 //        WebDriverManager.chromedriver().setup();
 //        driver = new ChromeDriver();

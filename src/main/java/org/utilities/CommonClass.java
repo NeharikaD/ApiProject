@@ -16,6 +16,9 @@ public class CommonClass {
     public static RequestSpecification getRequest;
     public static Response response;
 
+    public static String username = property.getProperty("username").toString();
+    public static String password = property.getProperty("password").toString();
+
     public static void setURL() {
         Properties prop = PropertyUtils.loadAllTheProperties();
         String url = prop.getProperty("baseURI");
@@ -23,8 +26,6 @@ public class CommonClass {
     }
 
     public static void setAuthorization () {
-        String username = property.getProperty("username").toString();
-        String password = property.getProperty("password").toString();
         request = given().auth().basic(username, password);
     }
 
@@ -62,6 +63,19 @@ public class CommonClass {
                 .queryParam("reminderfreq",reminderfreq)
                 .queryParam("plan",plan)
                 .queryParam("email",email)
+                .queryParam("confirmPassword",password);
+    }
+
+    public static void setParams(String key,Object value) {
+        getRequest = request
+                .queryParam(key,value);
+
+    }
+
+    public static void setEmailPassword(){
+        CommonClass.getRequest = CommonClass.request
+                .queryParam("password",password)
+                .queryParam("email",username)
                 .queryParam("confirmPassword",password);
     }
 
